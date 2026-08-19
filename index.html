@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Allies — A Network of Communities Built on One Question</title>
+<meta name="description" content="Power Allies is a Los Angeles–based network of communities — Power Ladies, The Allies, and more — united by one question: How can I help you?">
+<style>
+  :root{
+    --ink:#141210; --ink-2:#1c1915; --cream:#f4efe4; --cream-2:#efe8d8;
+    --gold:#c9a34e; --gold-soft:#b9974a; --muted:#6f6a60;
+    --line:rgba(20,18,16,.14); --line-dk:rgba(244,239,228,.16);
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .serif{font-family:var(--serif);}
+  .logo{font-family:"Arial Black",Arial,sans-serif;font-weight:900;letter-spacing:-.5px;text-transform:uppercase;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-size:12px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold-soft);font-weight:700;}
+  section{padding:92px 0;}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.8vw,42px);line-height:1.1;}
+  .lede{font-size:clamp(16px,1.7vw,19px);color:var(--muted);line-height:1.6;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(20,18,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-dk);}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  nav .brand{color:var(--cream);font-size:19px;}
+  nav .brand .dot{color:var(--gold);}
+  nav .right{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(244,239,228,.72);font-weight:600;}
+  nav .right:hover{color:var(--gold);}
+
+  /* hero */
+  .hero{background:var(--ink);color:var(--cream);padding:118px 0 92px;}
+  .hero .eyebrow{color:var(--gold);}
+  .hero-logo{font-family:"Arial Black",Arial,sans-serif;font-weight:900;letter-spacing:-1px;text-transform:uppercase;font-size:clamp(56px,9.5vw,116px);line-height:.9;color:var(--cream);margin:16px 0 18px;}
+  .hero-logo .dot{color:var(--gold);}
+  .hero .tag{font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);color:var(--cream);max-width:24ch;line-height:1.2;margin-bottom:20px;}
+  .hero .quote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.4vw,40px);color:var(--gold);margin:8px 0 22px;}
+  .hero .sub{font-size:clamp(16px,1.9vw,20px);color:rgba(244,239,228,.8);max-width:640px;line-height:1.55;margin-bottom:52px;}
+  .hero-stats{display:flex;gap:56px;flex-wrap:wrap;border-top:1px solid var(--line-dk);padding-top:30px;}
+  .hero-stats .n{font-family:var(--serif);font-size:32px;color:var(--gold);line-height:1;}
+  .hero-stats .l{font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(244,239,228,.6);margin-top:8px;}
+
+  /* communities */
+  .head-block{margin-bottom:44px;}
+  .head-block h2{margin-top:12px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .ccard{border:1px solid var(--line);border-radius:10px;padding:34px 34px 28px;display:flex;flex-direction:column;min-height:220px;transition:border-color .2s,transform .15s,background .2s;}
+  .ccard:hover{border-color:var(--gold);transform:translateY(-2px);}
+  .ccard.feature{background:var(--ink);border-color:var(--ink);color:var(--cream);}
+  .ccard .cname{font-family:var(--serif);font-size:28px;margin-bottom:4px;}
+  .ccard .ctype{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin-bottom:14px;}
+  .ccard.feature .ctype{color:var(--gold);}
+  .ccard p{font-size:15.5px;line-height:1.55;color:#39352e;}
+  .ccard.feature p{color:rgba(244,239,228,.82);}
+  .ccard .link{margin-top:auto;padding-top:20px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--gold-soft);}
+  .ccard.feature .link{color:var(--gold);}
+  .ccard .link.soon{color:var(--muted);}
+  .ccard.feature .link.soon{color:rgba(244,239,228,.5);}
+  a.ccard:hover .link{color:var(--gold);}
+  .ccard .cname a{color:inherit;}
+  .clinks{display:flex;gap:24px;margin-top:auto;padding-top:20px;flex-wrap:wrap;}
+  .clinks a{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--gold);transition:color .2s;}
+  .clinks a:hover{color:#d8b25c;}
+
+  /* mission */
+  .mission{background:var(--ink);color:var(--cream);text-align:center;}
+  .mission .q{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.4vw,38px);color:var(--cream);max-width:20ch;margin:14px auto 16px;line-height:1.2;}
+  .mission .q b{color:var(--gold);font-style:normal;font-weight:600;}
+  .mission .t{font-size:16px;color:rgba(244,239,228,.75);max-width:52ch;margin:0 auto;}
+
+  .volunteer{background:var(--cream-2);text-align:center;}
+  .volunteer h2{margin:12px 0 16px;}
+  .volunteer .lede{max-width:640px;margin:0 auto 32px;}
+  .vbtn{display:inline-block;background:var(--gold);color:var(--ink);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:16px 32px;border-radius:5px;transition:transform .15s,background .2s;}
+  .vbtn:hover{background:#d8b25c;transform:translateY(-1px);}
+
+  footer{background:var(--ink-2);color:rgba(244,239,228,.7);border-top:1px solid var(--line-dk);padding:52px 0 40px;}
+  footer .frow{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+  footer .brand{font-size:21px;color:var(--cream);}
+  footer .brand .dot{color:var(--gold);}
+  footer .fcol .k{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px;}
+  footer a:hover{color:var(--gold);}
+  footer .legal{margin-top:40px;padding-top:22px;border-top:1px solid var(--line-dk);font-size:12px;letter-spacing:1px;color:rgba(244,239,228,.4);text-transform:uppercase;}
+
+  @media (max-width:820px){
+    .grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+    .hero-stats{gap:32px;}
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand logo" href="#top">Power Allies<span class="dot">.</span></a>
+        <div style="display:flex;gap:28px;align-items:center;">
+          <a class="right" href="#volunteer">Volunteer</a>
+          <a class="right" href="mailto:info@powerallies.com">Get in Touch</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">The Network</p>
+      <h1 class="hero-logo">Power Allies<span class="dot">.</span></h1>
+      <p class="tag">A network of communities that show up for one another.</p>
+      <p class="quote">"How can I help you?"</p>
+      <p class="sub">Founded in Los Angeles in 2023 with 35 members and one question, Power Allies has grown into a family of communities — for women, for men, and for the next generation — all built on the same ethos of Active Helping, in person.</p>
+      <div class="hero-stats">
+        <div><div class="n serif">1,300+</div><div class="l">Members &amp; growing</div></div>
+        <div><div class="n serif">12</div><div class="l">Global chapters</div></div>
+        <div><div class="n serif">2023</div><div class="l">Founded in LA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITIES -->
+  <section id="communities">
+    <div class="wrap">
+      <div class="head-block">
+        <p class="eyebrow">The Communities</p>
+        <h2>One network. Many ways in.</h2>
+      </div>
+      <div class="grid">
+
+        <div class="ccard feature">
+          <div class="cname serif"><a href="https://thepowerladies.com">Power Ladies</a></div>
+          <div class="ctype">The Founding Community</div>
+          <p>Where it all began — a referral-based women's community helping one another in their personal and professional lives. 1,300+ members, chapters from LA to Montreal and Lisbon.</p>
+          <div class="clinks">
+            <a href="https://thepowerladies.com">Visit&nbsp;→</a>
+            <a href="https://www.instagram.com/powertimeforpowerladies/">Instagram&nbsp;↗</a>
+          </div>
+        </div>
+
+        <div class="ccard feature">
+          <div class="cname serif"><a href="https://thealliesclub.com">The Allies</a></div>
+          <div class="ctype">The Men's Community &amp; Movement</div>
+          <p>Men showing up for men — and a better answer for the young men watching. Launching its Athlete Ambassadors on October 17, 2026.</p>
+          <div class="clinks">
+            <a href="https://thealliesclub.com">Visit&nbsp;→</a>
+          </div>
+        </div>
+
+        <div class="ccard">
+          <div class="cname serif">Power Sisters</div>
+          <div class="ctype">Next-Generation Leadership</div>
+          <p>An inclusive leadership community for the next generation of women, growing within the network.</p>
+          <div class="link soon">Coming soon</div>
+        </div>
+
+        <div class="ccard">
+          <div class="cname serif">Young Allies</div>
+          <div class="ctype">The Next Generation</div>
+          <p>High-school clubs — boys and girls learning healthy language and how to show up for each other.</p>
+          <div class="link soon">Coming soon</div>
+        </div>
+
+        <div class="ccard">
+          <div class="cname serif">Athlete Ambassadors</div>
+          <div class="ctype">Leaders On &amp; Off the Field</div>
+          <p>Accomplished athletes modeling emotionally intelligent masculinity — men young men already look up to.</p>
+          <div class="link soon">Part of The Allies</div>
+        </div>
+
+        <div class="ccard">
+          <div class="cname serif">Speakers Bureau</div>
+          <div class="ctype">Voices of the Network</div>
+          <p>Keynotes, panels, and moderators from across the Power Allies communities.</p>
+          <div class="link soon">Inquire</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="mission">
+    <div class="wrap">
+      <p class="eyebrow">What Unites Us</p>
+      <p class="q serif">One network, one ethos: <b>Active Helping.</b></p>
+      <p class="t">Every community in the Power Allies network is built on the same simple, powerful question — and a commitment to answering it, in person, for one another.</p>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER -->
+  <section class="volunteer" id="volunteer">
+    <div class="wrap">
+      <p class="eyebrow">Get Involved</p>
+      <h2>Help us build the network.</h2>
+      <p class="lede">Active Helping is the whole idea — and now you can be part of making it happen. We're welcoming volunteers across Power Allies to help with events, chapters, and community, in Los Angeles and beyond.</p>
+      <a class="vbtn" href="mailto:info@powerallies.com?subject=Volunteering%20with%20Power%20Allies">Inquire — info@powerallies.com</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="frow">
+        <div class="fcol" style="max-width:320px;">
+          <div class="brand logo">Power Allies<span class="dot">.</span></div>
+          <p style="margin-top:12px;font-size:14px;color:rgba(244,239,228,.6);">A Los Angeles–based network of communities built on one question: how can I help you?</p>
+        </div>
+        <div class="fcol">
+          <p class="k">Communities</p>
+          <p style="font-size:15px;line-height:1.9;">
+            <a href="https://thepowerladies.com">Power Ladies</a><br>
+            <a href="https://thealliesclub.com">The Allies</a>
+          </p>
+        </div>
+        <div class="fcol">
+          <p class="k">Follow</p>
+          <p style="font-size:15px;line-height:1.9;">
+            <a href="https://www.instagram.com/powertimeforpowerladies/">Power Ladies — Instagram</a>
+          </p>
+        </div>
+        <div class="fcol">
+          <p class="k">Connect</p>
+          <p style="font-size:15px;line-height:1.9;">
+            <a href="https://powerallies.com">powerallies.com</a><br>
+            <a href="mailto:info@powerallies.com">info@powerallies.com</a>
+          </p>
+        </div>
+      </div>
+      <p class="legal">© 2026 Power Allies LLC · Los Angeles · Founded 2023</p>
+    </div>
+  </footer>
+
+</body>
+</html>
